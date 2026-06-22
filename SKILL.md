@@ -1,8 +1,23 @@
 ---
 name: daily-hotspot
-description: >
-  每日热点速览技能 - 使用必应/谷歌搜索生成每日热点简报
-  不使用Brave Search，改用Bing、Google等搜索引擎
+description: "Daily hotspot brief - Bing/Google search based news summary (legacy, prefer daily-morning-brief)"
+version: 1.0.0
+author: lzylipu
+license: MIT
+platforms: [linux]
+status: deprecated
+replaced_by: daily-morning-brief
+prerequisites:
+  services:
+    - name: curl/web_fetch
+      description: "HTTP client for search engine access"
+metadata:
+  hermes:
+    tags: [daily, hotspot, news, bing, google, 热点, 新闻]
+    related_skills: [daily-morning-brief, newsnow-skill]
+    homepage: https://github.com/lzylipu/openclaw-skill-daily-hotspot
+    category: personal
+    skill_type: cron
 ---
 
 # Daily Hotspot - 每日热点速览

@@ -64,11 +64,11 @@ def extract_key_points(text_content, max_points=2):
     return key_points
 
 def get_lyon_weather():
-    """获取洛阳天气"""
+    """获取CITY_NAME天气"""
     try:
         weather_result = subprocess.run([
             "python3", "-c",
-            "import sys; from openclaw.tools import web_fetch; result = web_fetch('https://duckduckgo.com/html/?q=洛阳+天气'); text = result.get('text', ''); print(text)"
+            "import sys; from openclaw.tools import web_fetch; result = web_fetch('https://duckduckgo.com/html/?q=CITY_NAME+天气'); text = result.get('text', ''); print(text)"
         ], capture_output=True, text=True, timeout=15)
         
         if weather_result.returncode == 0:
@@ -93,16 +93,16 @@ def generate_daily_brief_with_webfetch():
     
     # 搜索关键词配置
     categories = {
-        "信访/治理": ["洛阳 信访工作 基层治理", "社区治理 洛阳"],
+        "信访/治理": ["CITY_NAME 信访工作 基层治理", "社区治理 CITY_NAME"],
         "时政": ["今日时政 新闻 2026", "国家政策 最新"],
-        "社会民生": ["洛阳 民生 社会新闻", "今日社会热点"],
+        "社会民生": ["CITY_NAME 民生 社会新闻", "今日社会热点"],
         "法律政策": ["最新法律法规 2026", "政策解读 法规"],
         "热点补充": ["今日热点 新闻", "重要事件 今日"]
     }
     
     brief_lines = []
     brief_lines.append(f"《每日热点速览》 {time_info['date']} {time_info['weekday']} {time_info['time']}")
-    brief_lines.append(f"洛阳天气：{weather_desc}，{weather_temp}")
+    brief_lines.append(f"CITY_NAME天气：{weather_desc}，{weather_temp}")
     brief_lines.append("")
     
     all_content_found = False
@@ -150,7 +150,7 @@ def main():
         # 这里提供手动执行的命令
         
         print(f"""《每日热点速览》 {time_info['date']} {time_info['weekday']} {time_info['time']}
-洛阳天气：{weather_desc}，{weather_temp}
+CITY_NAME天气：{weather_desc}，{weather_temp}
 
 一、信访/治理
 （暂无高价值本地信息）

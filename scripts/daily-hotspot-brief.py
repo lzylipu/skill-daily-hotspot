@@ -68,7 +68,7 @@ def extract_news_snippets(html_content, max_items=2):
     return snippets[:max_items]
 
 def get_lyon_weather():
-    """获取洛阳天气（模拟）"""
+    """获取CITY_NAME天气（模拟）"""
     # 实际应该调用天气 API，这里先模拟
     return "Partly cloudy", "+2°C~+9°C"
 
@@ -79,15 +79,15 @@ def generate_daily_brief():
     
     # 搜索关键词
     search_keywords = {
-        "信访/治理": ["洛阳 信访工作", "基层治理 洛阳"],
+        "信访/治理": ["CITY_NAME 信访工作", "基层治理 CITY_NAME"],
         "时政": ["今日时政新闻", "国家政策 最新"],
-        "社会民生": ["洛阳 民生新闻", "社会热点 今日"],
+        "社会民生": ["CITY_NAME 民生新闻", "社会热点 今日"],
         "法律政策": ["最新法律法规", "政策解读 2026"],
         "热点补充": ["今日热点新闻", "重要事件 今日"]
     }
     
     brief_content = f"""《每日热点速览》 {time_info['date']} {time_info['weekday']} {time_info['time']}
-洛阳天气：{weather_desc}，{weather_temp}
+CITY_NAME天气：{weather_desc}，{weather_temp}
 """
     
     all_news_found = False
@@ -98,7 +98,7 @@ def generate_daily_brief():
         
         for keyword in keywords:
             # 优先搜索本地信息
-            if "洛阳" in keyword:
+            if "CITY_NAME" in keyword:
                 html = search_with_bing(keyword, "cn")
             else:
                 html = search_with_bing(keyword, "int")
@@ -147,7 +147,7 @@ def main():
         time_info = get_current_time_info()
         weather_desc, weather_temp = get_lyon_weather()
         placeholder = f"""《每日热点速览》 {time_info['date']} {time_info['weekday']} {time_info['time']}
-洛阳天气：{weather_desc}，{weather_temp}
+CITY_NAME天气：{weather_desc}，{weather_temp}
 
 一、信访/治理
 （暂无高价值本地信息）
