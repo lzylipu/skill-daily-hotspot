@@ -1,5 +1,7 @@
 # Daily Hotspot - OpenClaw Skill
 
+**[English](./README.en.md) | 中文**
+
 每日热点速览技能，使用必应/谷歌搜索生成每日热点简报，无需Brave Search API。
 
 ## 功能特性
